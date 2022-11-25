@@ -9,7 +9,8 @@ export default function Letras(){
         <div class="letras">
             {alfabeto.map((letra,index) => (
             <div 
-                className = {`letra `} //condition(true) ? valor1 : valor2 se o jogo começou(true) enabled : disabled {!inicioJogo() ? disabled : letra} 
+                className = {`letra-desativada`} //condition(true) ? valor1 : valor2 se o jogo começou(true) enabled : disabled {!inicioJogo() ? disabled : letra}
+                
                 key = {index} // sintaxe  ` ${terminadas.includes(tarefa) ? "finaliza" : ""}`
                 onClick={jogada}
                 >
