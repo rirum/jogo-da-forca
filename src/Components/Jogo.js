@@ -12,12 +12,16 @@ export default function Jogo(props) {
     
     const [palavraEscondida, setPalavraEscondida] = useState([]);
     
-    const inicioForca = 0;
-    const [forcaImagem, setForcaImagem] = useState(inicioForca) //para inserir imagem da forca conforme erros
+    const [classePalavra, setClassePalavra] = React.useState('letra-jogo'); // usado para mudar a classe no clique (provavelmente usarei no clique no letras)
+ 
 
+    const {letrasClique, setLetrasClique, erro, setErros, setStatusJogo, setChute} = props
+    // const [desabilitado, setDesabilitado] = React.useState(true); // desabilitar o jogo
     function erroPalavraLetra(){
-
+ // funcao para linkar erro com as imagens da forca
     }
+
+  
 
 function escondePalavra(palavras){
     let palavraEscondida = palavras.split('');
@@ -27,15 +31,22 @@ function escondePalavra(palavras){
     
     console.log(palavraEscondida); 
     
+   
+    
+    
 }
 
 
 function escolhePalavra() {
-  
+    setStatusJogo("jogando")
+    setLetrasClique("")
+    setErros(0)
+    setChute("")
     const novaPalavra = palavras[Math.floor(Math.random() * palavras.length)];  // a palavra ta aqui
     console.log(novaPalavra);
     escondePalavra(novaPalavra); // o array ta aqui
-    
+    // setClassePalavra('letra-jogo');
+   
 
   
 }
@@ -44,13 +55,13 @@ function escolhePalavra() {
         <div class="container">
 
             <div class="forca"> 
-                <img src={`img/forca${forcaImagem}.png`} alt="" />
+                <img src={`img/forca${erro}.png`} alt="" />
             </div>
 
             <div class="escolha">
                 <div class="escolher-palavra" onClick={escolhePalavra}> <p>Escolher Palavra</p> </div>
                 <div class="palavra-jogo">
-                    <div class="letra-jogo">
+                    <div class={classePalavra} >
                      {palavraEscondida.join(' ')}
                      
                     </div>

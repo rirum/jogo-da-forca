@@ -38,15 +38,26 @@
     display: flex;
     margin-top: 300px;
 }
-.letra-jogo {
+.letra-jogo,
+.correto,
+.errado {
     /* width: 30px;
     height: 30px;
     border-style: none none solid none;
     border-width: 5px;
    margin-right: 10px;   */
    font-size: 50px;
+   font-weight: 700;
+   font-family: 'Noto sans', sans-serif;
 }
 
+.correto {
+    color:#27AE60;
+}
+
+.errado {
+    color: #ff0000;
+}
 
 
 .letras {
@@ -83,6 +94,11 @@
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
+
+/* button:disabled {
+    background-color: #9FAAB5;
+    color:#798A9F;
+} */
 
 .letra p {
     color:#39739D;
@@ -130,3 +146,4 @@ input {
     font-size: 16px;
     font-weight: 700;
 }
+

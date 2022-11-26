@@ -1,19 +1,34 @@
-import { useState } from "react";
-export default function Chute(){
-const [textoInput, setTextoInput] = useState("") //salvar o que está no input 
 
-function salvaTexto(event){
-console.log(setTextoInput(event.target.value)) //input controlado para poder usar na lista/mostrar pro user
+export default function Chute(props){
+// const [textoInput, setTextoInput] = useState("") // criar o estado -> onChange -> value (input controlado)
+const errosForca = 6
+
+const {chute, setChute, palavra, setStatusJogo, setErros} = props
+function chutePalavra(){
+const palavraString = palavra.toString()
+if (palavraString === chute.toLowerCase()) {
+    setStatusJogo("ganhou")
+} else {
+    setStatusJogo("perdeu")
+    setErros(errosForca)
 }
+}
+
+
+// function salvaTexto(event){
+// console.log(setTextoInput(event.target.value)) //input controlado para poder usar na lista/mostrar pro user
+// }
  //value embaixo = saber que tem q zerar futuramente (aula quinta)
     return (
 
         <div class="chute"> 
             <p>Já sei a palavra!</p>
             <input type="text" 
-            onChange={salvaTexto}
-            value={textoInput}/> 
-            <button class="botao-chutar">Chutar</button>
+            onChange={(event) => setChute(event.target.value)}
+            value={chute}/> 
+            <button class="botao-chutar"
+            onClick={chutePalavra}
+            >Chutar</button>
         </div>
 
     );
