@@ -53,6 +53,7 @@ export default function App() {
     setStatusJogo={setStatusJogo}
     alfabeto = { alfabeto }    
     setPalavra = { setPalavra }
+    palavra = {palavra}
     palavraEscondida = { palavraEscondida }
     setPalavraEscondida = { setPalavraEscondida }
     quantidadeErros = {quantidadeErros}
