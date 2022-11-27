@@ -45,13 +45,18 @@ export default function Letras(props) {
             setStatusJogo("perdeu");
             setClassePalavra("errado");
             setPalavraEscondida(palavra);
+            desativarTeclado();
         }else if(palavra === palavraEscondida.join('')){
             console.log('ganhou');
             setStatusJogo("ganhou");
             setClassePalavra("correto");
             setPalavraEscondida(palavra);
+            desativarTeclado();
         }
     } 
+    function desativarTeclado() {
+        alfabeto.map((letra) => letra.ativo = false);
+    }
 
     return (
 
