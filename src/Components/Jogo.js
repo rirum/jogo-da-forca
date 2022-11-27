@@ -3,7 +3,7 @@ import { palavras } from '../palavras.js';
 
 export default function Jogo(props) {             
 
-    const { statusJogo, setStatusJogo, alfabeto, classePalavra, setPalavra, palavraEscondida, setPalavraEscondida, quantidadeErros, palavra } = props    
+    const { statusJogo, setStatusJogo, alfabeto, classePalavra, setClassePalavra, setPalavra, palavraEscondida, setPalavraEscondida, quantidadeErros, setQuantidadeErros, palavra } = props    
 
     function escondePalavra(palavra){
         
@@ -25,7 +25,8 @@ export default function Jogo(props) {
             console.log(novaPalavra);
             setPalavra(novaPalavra);
             escondePalavra(novaPalavra);            
-
+            setQuantidadeErros(0);
+            setClassePalavra('letra-jogo');
             alfabeto.map((letra) => letra.ativo = true);
         }        
     }   
@@ -39,7 +40,7 @@ export default function Jogo(props) {
             </div>
 
             <div className="escolha">
-                <button className="escolher-palavra" disabled = { statusJogo !== 'inicio' } onClick={ iniciarJogo } data-test="choose-word"> <p>Escolher Palavra</p> </button>
+                <button className="escolher-palavra" disabled = { statusJogo === "jogando" } onClick={ iniciarJogo } data-test="choose-word"> <p>Escolher Palavra</p> </button>
                 <div className="palavra-jogo">
                     <div className={ classePalavra } data-test="word" data-answer={palavra}>
                      { palavraEscondida }

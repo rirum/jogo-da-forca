@@ -58,6 +58,8 @@ export default function App() {
     setPalavraEscondida = { setPalavraEscondida }
     quantidadeErros = {quantidadeErros}
     classePalavra = { classePalavra }
+    setQuantidadeErros = {setQuantidadeErros}
+    setClassePalavra = {setClassePalavra}
     />
 
     <Letras 
