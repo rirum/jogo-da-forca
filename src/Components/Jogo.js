@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import { palavras } from '../palavras.js';
 // 1 antes de clicar o botao as letras e input tem que estar desativadas
   // 2 apos clicar botao letras e input ativam
@@ -8,66 +7,49 @@ import { palavras } from '../palavras.js';
   // associar letras palavraEscondida - checar se existe em cada tentativa
   // se existe - completa linha
   // se nao existe - erro forca
-export default function Jogo(props) {
-    
-    const [palavraEscondida, setPalavraEscondida] = useState([]);
-    
-    const [classePalavra, setClassePalavra] = React.useState('letra-jogo'); // usado para mudar a classe no clique (provavelmente usarei no clique no letras)
- 
+export default function Jogo(props) {             
 
-    const {letrasClique, setLetrasClique, erro, setErros, setStatusJogo, setChute} = props
-    // const [desabilitado, setDesabilitado] = React.useState(true); // desabilitar o jogo
-    function erroPalavraLetra(){
- // funcao para linkar erro com as imagens da forca
+    const { statusJogo, setStatusJogo, alfabeto, classePalavra, setPalavra, palavraEscondida, setPalavraEscondida, quantidadeErros } = props    
+
+    function escondePalavra(palavra){
+        
+        let palavraEscondida = palavra.split('');
+        let quantasLetras = palavraEscondida.length;
+        let palavraArray = Array(quantasLetras).fill("_ ");
+
+        setPalavraEscondida(palavraArray);
     }
 
-  
-
-function escondePalavra(palavras){
-    let palavraEscondida = palavras.split('');
-    let quantasLetras = palavraEscondida.length;
-    let palavraArray = Array(quantasLetras).fill("_");
-    setPalavraEscondida(palavraArray);
     
-    console.log(palavraEscondida); 
-    
-   
-    
-    
-}
 
+    function iniciarJogo(){
+        console.log('iniciou o jogo');
+        setStatusJogo("jogando");
 
-function escolhePalavra() {
-    setStatusJogo("jogando")
-    setLetrasClique("")
-    setErros(0)
-    setChute("")
-    const novaPalavra = palavras[Math.floor(Math.random() * palavras.length)];  // a palavra ta aqui
-    console.log(novaPalavra);
-    escondePalavra(novaPalavra); // o array ta aqui
-    // setClassePalavra('letra-jogo');
-   
+        if(statusJogo !== "jogando"){
+            const novaPalavra = palavras[Math.floor(Math.random() * palavras.length)]; 
+            console.log(novaPalavra);
+            setPalavra(novaPalavra);
+            escondePalavra(novaPalavra);            
 
-  
-}
+            alfabeto.map((letra) => letra.ativo = true);
+        }        
+    }   
+
     return (
        
-        <div class="container">
-
+        <div class="container">           
+            
             <div class="forca"> 
-                <img src={`img/forca${erro}.png`} alt="" />
+                <img src={`img/forca${quantidadeErros}.png`} alt="" />
             </div>
 
             <div class="escolha">
-                <div class="escolher-palavra" onClick={escolhePalavra}> <p>Escolher Palavra</p> </div>
+                <button class="escolher-palavra" disabled = { statusJogo !== 'inicio' } onClick={ iniciarJogo } > <p>Escolher Palavra</p> </button>
                 <div class="palavra-jogo">
-                    <div class={classePalavra} >
-                     {palavraEscondida.join(' ')}
-                     
+                    <div class={ classePalavra } >
+                     { palavraEscondida }
                     </div>
-               
-                    
-                    
                 </div>
             </div>
         </div>
