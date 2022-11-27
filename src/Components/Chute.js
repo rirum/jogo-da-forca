@@ -33,20 +33,20 @@ export default function Chute(props){
     
     return (
 
-        <div class="chute">             
+        <div className="chute">             
             <p>Já sei a palavra!</p>
             <input type="text"             
             disabled = { statusJogo !== 'jogando' }
-            onChange={(event) => setChute(event.target.value)}            
+            onChange={(event) => setChute(event.target.value)}
+            data-test="guess-input"            
             />
-            <button class="botao-chutar"
+            <button className="botao-chutar"
             onClick={chutePalavra}
             disabled = { statusJogo !== 'jogando' }
+            data-test="guess-button"
             >Chutar</button>            
         </div>
 
     );
 }
 
-//se a palavra que o user escreveu === a palavra do escolher palavra - venceu
-// se a palavra que o user escreveu !== a palavra do escolher palavra - erro (imagem forca)

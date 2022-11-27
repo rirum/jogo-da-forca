@@ -1,12 +1,6 @@
 import React from "react";
 import { palavras } from '../palavras.js';
-// 1 antes de clicar o botao as letras e input tem que estar desativadas
-  // 2 apos clicar botao letras e input ativam
-   // 3embaralham palavras e puxam do palavras.js uma palavra ok
-  // conta-se as letras e passam pro letra-jogo distribuindo o numero de letras (contam o array de letras via map?) ok
-  // associar letras palavraEscondida - checar se existe em cada tentativa
-  // se existe - completa linha
-  // se nao existe - erro forca
+
 export default function Jogo(props) {             
 
     const { statusJogo, setStatusJogo, alfabeto, classePalavra, setPalavra, palavraEscondida, setPalavraEscondida, quantidadeErros } = props    
@@ -38,16 +32,16 @@ export default function Jogo(props) {
 
     return (
        
-        <div class="container">           
+        <div className="container">           
             
-            <div class="forca"> 
-                <img src={`img/forca${quantidadeErros}.png`} alt="" />
+            <div className="forca"> 
+                <img src={`img/forca${quantidadeErros}.png`} alt="forca-imagem" data-test="game-image"/>
             </div>
 
-            <div class="escolha">
-                <button class="escolher-palavra" disabled = { statusJogo !== 'inicio' } onClick={ iniciarJogo } > <p>Escolher Palavra</p> </button>
-                <div class="palavra-jogo">
-                    <div class={ classePalavra } >
+            <div className="escolha">
+                <button className="escolher-palavra" disabled = { statusJogo !== 'inicio' } onClick={ iniciarJogo } data-test="choose-word"> <p>Escolher Palavra</p> </button>
+                <div className="palavra-jogo">
+                    <div className={ classePalavra } data-test="word" data-answer={palavraEscondida}>
                      { palavraEscondida }
                     </div>
                 </div>

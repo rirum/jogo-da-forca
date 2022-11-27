@@ -55,7 +55,7 @@ export default function Letras(props) {
 
     return (
 
-        <div class="letras">
+        <div className="letras">
             {alfabeto.map((letra, index) => (            
             
             <button                
@@ -63,6 +63,7 @@ export default function Letras(props) {
                 disabled = { !letra.ativo }
                 key = {index} 
                 onClick={() =>{jogada(letra)}}
+                data-test="letter"
                 >
                 <p>{letra.valor.toUpperCase()}</p>
                 
