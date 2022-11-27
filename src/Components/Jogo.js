@@ -41,7 +41,7 @@ export default function Jogo(props) {
             <div className="escolha">
                 <button className="escolher-palavra" disabled = { statusJogo !== 'inicio' } onClick={ iniciarJogo } data-test="choose-word"> <p>Escolher Palavra</p> </button>
                 <div className="palavra-jogo">
-                    <div className={ classePalavra } data-test="word" data-answer={escondePalavra}>
+                    <div className={ classePalavra } data-test="word" data-answer={setPalavraEscondida}>
                      { palavraEscondida }
                     </div>
                 </div>
